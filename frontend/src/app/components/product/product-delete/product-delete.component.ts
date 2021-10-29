@@ -25,7 +25,7 @@ export class ProductDeleteComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    if (this.product.id === undefined) {
+    if (!this.product.id) {
       throw Error
     } else {
       this.productService.delete(this.product.id).subscribe(() => {

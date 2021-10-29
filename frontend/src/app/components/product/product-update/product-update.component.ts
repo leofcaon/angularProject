@@ -11,7 +11,10 @@ import { Product } from '../product.model';
 })
 export class ProductUpdateComponent implements OnInit {
 
-  product: Product;
+  product: Product = {
+    name: '',
+    price: undefined
+  }
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
@@ -24,7 +27,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   updateProduct(): void {
-    this.productService.update(this.product).subscribe(() => {
+    this.productService.update(this.product).subscribe(()=> {
     this.productService.showMessage('Produto atualizado com sucesso!');
     this.router.navigate(['/products']);
     })
